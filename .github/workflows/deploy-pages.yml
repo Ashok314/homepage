@@ -20,6 +20,7 @@ jobs:
     env:
       SITE_ORIGIN: https://ashok314.github.io
       PAGES_ROOT: /homepage
+      ROOT_APP: home
       DEPLOY_APPS: "binita helloworld"
     steps:
       - name: Checkout
@@ -38,6 +39,17 @@ jobs:
         run: |
           set -eu
           mkdir -p dist
+
+          root_base_path="${PAGES_ROOT}/"
+          root_site_url="${SITE_ORIGIN}${root_base_path}"
+
+          echo "Building ${ROOT_APP} -> ${root_base_path}"
+          PUBLIC_BASE_PATH="$root_base_path" \
+          PUBLIC_SITE_URL="$root_site_url" \
+          npm --workspace "@homepage/${ROOT_APP}" run build
+
+          cp -R "apps/${ROOT_APP}/dist/." dist/
+
           for app in $DEPLOY_APPS; do
             base_path="${PAGES_ROOT}/${app}/"
             site_url="${SITE_ORIGIN}${base_path}"

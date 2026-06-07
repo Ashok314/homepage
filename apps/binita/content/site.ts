@@ -310,12 +310,12 @@ export const siteContent: BusinessContent = {
         label: "クレジットカード",
         items: "VISA, Mastercard, JCB, American Express, Diners Club"
       },
-      { label: "QRコード決済", items: "PayPay, " }
+      { label: "QRコード決済", items: "PayPay, LINE Pay" }
     ]
   },
   reviews: {
     title: "口コミ・レビュー",
     readReviewsLink: "https://share.google/UwsnE6eU0INhmWucb",
-    getReviewsLink: "#" //TODO: Add specific link here
+    getReviewsLink: "https://share.google/UwsnE6eU0INhmWucb" //TODO: Add specific link here
   }
 };

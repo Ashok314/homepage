@@ -33,7 +33,7 @@ npm run check
 npm run format:check
 ```
 
-Default `dev` and `preview` target Binita for convenience. Use the app-specific variants such as `npm run dev:helloworld`, `npm run build:binita`, or `npm run check:all` when needed.
+Default `dev` and `preview` target the root home app for convenience. Use the app-specific variants such as `npm run dev:binita`, `npm run dev:helloworld`, `npm run build:home`, or `npm run check:all` when needed.
 
 ## Architecture
 
@@ -56,6 +56,7 @@ To add another deployed app, add its app name to `DEPLOY_APPS` in `.github/workf
 
 ## Current Apps
 
+- `apps/home` is the root landing page for `/homepage/`.
 - `apps/binita` is the primary client site.
 - `apps/helloworld` is a minimal test app used to verify multi-app Pages deployment.
 
@@ -73,4 +74,4 @@ Keep the first pass static and content-driven. Add new abstractions only after a
 
 ## Proposal Backlog
 
-A future `apps/directory` or `/clients` listing page can read per-client metadata and show all hosted clients in one place. This is intentionally not part of the current Binita build.
+A future `/clients` listing experience can expand the root home app or be split into a dedicated route if the monorepo grows beyond a small set of sites.
