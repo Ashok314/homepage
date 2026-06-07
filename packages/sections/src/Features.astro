@@ -1,0 +1,53 @@
+---
+import Section from "@homepage/ui/Section.astro";
+import type { BusinessContent } from "@homepage/content";
+
+type Props = {
+  features: BusinessContent["features"];
+};
+
+const { features } = Astro.props;
+---
+
+<Section id="features" eyebrow="ビニタの魅力" title="本場の味を楽しめる理由">
+  <div class="features">
+    {features.map((feature) => (
+      <article>
+        <h3>{feature.title}</h3>
+        <p>{feature.text}</p>
+      </article>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .features {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  article {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.35rem;
+  }
+
+  h3 {
+    font-size: 1.08rem;
+    margin: 0 0 0.6rem;
+  }
+
+  p {
+    color: var(--color-muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  @media (max-width: 800px) {
+    .features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,24 @@
+{
+  "name": "@homepage/sections",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./About.astro": "./src/About.astro",
+    "./Branches.astro": "./src/Branches.astro",
+    "./Contact.astro": "./src/Contact.astro",
+    "./Features.astro": "./src/Features.astro",
+    "./Footer.astro": "./src/Footer.astro",
+    "./Gallery.astro": "./src/Gallery.astro",
+    "./Header.astro": "./src/Header.astro",
+    "./Hero.astro": "./src/Hero.astro",
+    "./Map.astro": "./src/Map.astro",
+    "./Menu.astro": "./src/Menu.astro",
+    "./News.astro": "./src/News.astro",
+    "./Testimonials.astro": "./src/Testimonials.astro"
+  },
+  "dependencies": {
+    "@homepage/content": "*",
+    "@homepage/ui": "*"
+  }
+}

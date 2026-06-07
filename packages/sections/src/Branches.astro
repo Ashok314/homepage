@@ -1,0 +1,121 @@
+---
+import Section from "@homepage/ui/Section.astro";
+import type { BusinessContent } from "@homepage/content";
+
+type Props = {
+  branches: NonNullable<BusinessContent["branches"]>;
+};
+
+const { branches } = Astro.props;
+const activeBranches = branches.filter((branch) => branch.status === "active");
+const historicalBranches = branches.filter((branch) => branch.status !== "active");
+---
+
+<Section id="branches" eyebrow="店舗" title="店舗情報">
+  <div class="branches">
+    <div class="branches__panel">
+      <h3>掲載店舗</h3>
+      {activeBranches.map((branch) => (
+        <article>
+          <span class="status status--active">営業情報</span>
+          <h4>{branch.name}</h4>
+          {branch.address && <p>{branch.address}</p>}
+          {branch.phone && <a href={`tel:${branch.phone.replaceAll(/[^+\d]/g, "")}`}>{branch.phone}</a>}
+          {branch.note && <small>{branch.note}</small>}
+        </article>
+      ))}
+    </div>
+    <div class="branches__panel branches__panel--history">
+      <h3>旧店舗情報</h3>
+      {historicalBranches.map((branch) => (
+        <article>
+          <span class:list={["status", branch.status === "verification-required" && "status--todo"]}>
+            {branch.status === "history" ? "旧サイト掲載" : "旧店舗"}
+          </span>
+          <h4>{branch.name}</h4>
+          {branch.address && <p>{branch.address}</p>}
+          {branch.note && <small>{branch.note}</small>}
+        </article>
+      ))}
+    </div>
+  </div>
+</Section>
+
+<style>
+  .branches {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+
+  .branches__panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+
+  .branches__panel--history {
+    background: color-mix(in srgb, var(--color-surface) 84%, var(--color-border));
+  }
+
+  h3 {
+    font-family: var(--font-heading);
+    font-size: 1.55rem;
+    margin: 0 0 1rem;
+  }
+
+  article + article {
+    border-top: 1px solid var(--color-border);
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  h4 {
+    font-size: 1.05rem;
+    margin: 0.55rem 0 0.35rem;
+  }
+
+  p,
+  a,
+  small {
+    color: var(--color-muted);
+    display: block;
+    line-height: 1.6;
+  }
+
+  a {
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 0.22em;
+  }
+
+  small {
+    margin-top: 0.45rem;
+  }
+
+  .status {
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-muted);
+    display: inline-flex;
+    font-size: 0.76rem;
+    font-weight: 850;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .status--active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary-text);
+  }
+
+  .status--todo {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 820px) {
+    .branches {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

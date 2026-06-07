@@ -1,0 +1,113 @@
+---
+import Section from "@homepage/ui/Section.astro";
+import type { BusinessContent } from "@homepage/content";
+
+type Props = {
+  menu: BusinessContent["menu"];
+};
+
+const { menu } = Astro.props;
+const groups = menu.groups ?? [{ title: "Menu", items: menu.items ?? [] }];
+---
+
+<Section id="menu" eyebrow="メニュー" title={menu.title} intro={menu.intro}>
+  <div class="menu">
+    {groups.map((group) => (
+      <section class="menu__group" aria-labelledby={`menu-${group.title.toLowerCase().replaceAll(" ", "-")}`}>
+        <h3 id={`menu-${group.title.toLowerCase().replaceAll(" ", "-")}`}>{group.title}</h3>
+        <div class="menu__items">
+          {group.items.map((item) => (
+            <article>
+              <div>
+                <h4>{item.name}</h4>
+                <p>{item.description}</p>
+                {item.tags && (
+                  <ul aria-label={`${item.name} tags`}>
+                    {item.tags.map((tag) => <li>{tag}</li>)}
+                  </ul>
+                )}
+              </div>
+              {item.price && <strong>{item.price}</strong>}
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .menu {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .menu__group {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .menu__items {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menu__group > h3 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 1.55rem;
+    margin: 0;
+  }
+
+  article {
+    align-items: start;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1.02rem;
+    margin: 0 0 0.45rem;
+  }
+
+  p {
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  strong {
+    color: var(--color-primary);
+    white-space: nowrap;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0.85rem 0 0;
+    padding: 0;
+  }
+
+  li {
+    background: color-mix(in srgb, var(--color-accent) 16%, white);
+    border-radius: 999px;
+    color: var(--color-text);
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 0.28rem 0.55rem;
+  }
+
+  @media (max-width: 860px) {
+    .menu__items {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

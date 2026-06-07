@@ -1,0 +1,92 @@
+---
+import Section from "@homepage/ui/Section.astro";
+import type { BusinessContent } from "@homepage/content";
+
+type Props = {
+  contact: BusinessContent["contact"];
+};
+
+const { contact } = Astro.props;
+---
+
+<Section id="contact" eyebrow="アクセス" title="店舗情報">
+  <div class="contact">
+    <address>
+      <strong>住所</strong>
+      <span>{contact.address}</span>
+      <strong>電話番号</strong>
+      <a href={`tel:${contact.phone.replaceAll(/[^+\d]/g, "")}`}>{contact.phone}</a>
+      {contact.email && (
+        <>
+          <strong>メール</strong>
+          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        </>
+      )}
+    </address>
+    <div>
+      <h3>営業時間</h3>
+      <ul>
+        {contact.hours.map((line) => <li>{line}</li>)}
+      </ul>
+      {contact.details && (
+        <>
+          <h3>詳細</h3>
+          <ul>
+            {contact.details.map((line) => <li>{line}</li>)}
+          </ul>
+        </>
+      )}
+    </div>
+  </div>
+</Section>
+
+<style>
+  .contact {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    padding: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  address {
+    display: grid;
+    font-style: normal;
+    gap: 0.35rem;
+  }
+
+  strong,
+  h3 {
+    margin: 0.85rem 0 0;
+  }
+
+  strong:first-child {
+    margin-top: 0;
+  }
+
+  span,
+  a,
+  li {
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+
+  a {
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 0.22em;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+  }
+
+  @media (max-width: 700px) {
+    .contact {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

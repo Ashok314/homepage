@@ -1,0 +1,47 @@
+---
+import Section from "@homepage/ui/Section.astro";
+import type { BusinessContent } from "@homepage/content";
+
+type Props = {
+  about: BusinessContent["about"];
+};
+
+const { about } = Astro.props;
+---
+
+<Section id="about" eyebrow="こだわり" title={about.title}>
+  <div class="about">
+    <p>{about.text}</p>
+    <img src={about.image.src} alt={about.image.alt} loading="lazy" />
+  </div>
+</Section>
+
+<style>
+  .about {
+    align-items: center;
+    display: grid;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+  }
+
+  p {
+    color: var(--color-muted);
+    font-size: 1.12rem;
+    line-height: 1.85;
+    margin: 0;
+  }
+
+  img {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  @media (max-width: 760px) {
+    .about {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

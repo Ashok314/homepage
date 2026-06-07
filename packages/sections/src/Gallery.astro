@@ -1,0 +1,38 @@
+---
+import Section from "@homepage/ui/Section.astro";
+import type { BusinessContent } from "@homepage/content";
+
+type Props = {
+  gallery: BusinessContent["gallery"];
+};
+
+const { gallery } = Astro.props;
+---
+
+<Section id="gallery" eyebrow="写真" title="料理写真">
+  <div class="gallery">
+    {gallery.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
+  </div>
+</Section>
+
+<style>
+  .gallery {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  img {
+    aspect-ratio: 1;
+    border-radius: var(--radius);
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  @media (max-width: 760px) {
+    .gallery {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

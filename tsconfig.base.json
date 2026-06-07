@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ES2022",
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@homepage/content": ["packages/content/src/index.ts"],
+      "@homepage/themes": ["packages/themes/src/index.ts"],
+      "@homepage/ui/*": ["packages/ui/src/*"],
+      "@homepage/sections/*": ["packages/sections/src/*"]
+    }
+  }
+}

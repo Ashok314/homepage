@@ -1,0 +1,102 @@
+---
+import type { BusinessContent } from "@homepage/content";
+import type { BusinessTheme } from "@homepage/themes";
+import { themeToCssVars } from "@homepage/themes";
+
+type Props = {
+  content: BusinessContent;
+  theme: BusinessTheme;
+};
+
+const { content, theme } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const base = import.meta.env.BASE_URL;
+const archiveBackground = `${base}clients/binita/archive/all/backimg03.png`;
+const imagePath = content.hero.image.src.startsWith("http")
+  ? content.hero.image.src
+  : `${base}${content.hero.image.src.replace(/^\/+/, "")}`;
+const imageUrl = new URL(imagePath, Astro.site).toString();
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: content.business.name,
+  description: content.business.description,
+  servesCuisine: "インド料理",
+  telephone: content.contact.phone,
+  address: content.contact.address,
+  image: imageUrl,
+  url: canonicalUrl
+};
+---
+
+<!doctype html>
+<html lang="ja" style={`${themeToCssVars(theme)}; --page-background-image: url("${archiveBackground}")`}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{content.business.seoTitle}</title>
+    <meta name="description" content={content.business.seoDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:title" content={content.business.seoTitle} />
+    <meta property="og:description" content={content.business.seoDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    background:
+      var(--page-background-image),
+      var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  main {
+    overflow: hidden;
+  }
+
+  .skip-link {
+    background: var(--color-primary);
+    color: var(--color-primary-text);
+    font-weight: 800;
+    left: 1rem;
+    padding: 0.7rem 1rem;
+    position: absolute;
+    top: 1rem;
+    transform: translateY(-140%);
+    z-index: 20;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+</style>

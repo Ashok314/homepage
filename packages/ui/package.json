@@ -1,0 +1,10 @@
+{
+  "name": "@homepage/ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./Button.astro": "./src/Button.astro",
+    "./Section.astro": "./src/Section.astro"
+  }
+}

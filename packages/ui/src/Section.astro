@@ -1,0 +1,67 @@
+---
+type Props = {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+};
+
+const { id, eyebrow, title, intro } = Astro.props;
+---
+
+<section id={id} class="section">
+  <div class="section__inner">
+    {(eyebrow || title || intro) && (
+      <header class="section__header">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        {title && <h2>{title}</h2>}
+        {intro && <p>{intro}</p>}
+      </header>
+    )}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding: clamp(3rem, 8vw, 5.75rem) 1rem;
+  }
+
+  .section__inner {
+    margin: 0 auto;
+    max-width: 1120px;
+  }
+
+  .section__header {
+    margin-bottom: 2rem;
+    max-width: 680px;
+  }
+
+  .eyebrow {
+    color: var(--color-primary);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.65rem;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    background-image: var(--section-title-background);
+    background-position: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    line-height: 1.05;
+    margin: 0;
+    padding: 0.7rem 1rem;
+  }
+
+  .section__header p:last-child {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0.85rem 0 0;
+  }
+</style>

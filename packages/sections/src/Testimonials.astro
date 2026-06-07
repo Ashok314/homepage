@@ -1,0 +1,54 @@
+---
+import Section from "@homepage/ui/Section.astro";
+import type { BusinessContent } from "@homepage/content";
+
+type Props = {
+  testimonials: BusinessContent["testimonials"];
+};
+
+const { testimonials } = Astro.props;
+---
+
+<Section id="testimonials" eyebrow="Guests" title="Loved by the neighborhood">
+  <div class="testimonials">
+    {testimonials.map((testimonial) => (
+      <figure>
+        <blockquote>{testimonial.quote}</blockquote>
+        <figcaption>{testimonial.author}</figcaption>
+      </figure>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .testimonials {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  figure {
+    background: var(--color-primary);
+    border-radius: var(--radius);
+    color: var(--color-primary-text);
+    margin: 0;
+    padding: 1.35rem;
+  }
+
+  blockquote {
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  figcaption {
+    color: color-mix(in srgb, var(--color-primary-text) 82%, var(--color-accent));
+    font-weight: 850;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 820px) {
+    .testimonials {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

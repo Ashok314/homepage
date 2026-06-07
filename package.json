@@ -1,0 +1,21 @@
+{
+  "name": "homepage",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm --workspace @homepage/binita run dev",
+    "build": "npm --workspace @homepage/binita run build",
+    "preview": "npm --workspace @homepage/binita run preview",
+    "check": "npm --workspace @homepage/binita run check"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^5.9.3",
+    "typescript": "^5.8.3"
+  }
+}
