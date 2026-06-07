@@ -8,14 +8,35 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm --workspace @homepage/binita run dev",
-    "build": "npm --workspace @homepage/binita run build",
-    "preview": "npm --workspace @homepage/binita run preview",
-    "check": "npm --workspace @homepage/binita run check"
+    "dev": "npm run dev:binita",
+    "dev:binita": "npm --workspace @homepage/binita run dev",
+    "dev:helloworld": "npm --workspace @homepage/helloworld run dev",
+    "build": "npm run build:all",
+    "build:all": "npm --workspaces --if-present run build",
+    "build:binita": "npm --workspace @homepage/binita run build",
+    "build:helloworld": "npm --workspace @homepage/helloworld run build",
+    "preview": "npm run preview:binita",
+    "preview:binita": "npm --workspace @homepage/binita run preview",
+    "preview:helloworld": "npm --workspace @homepage/helloworld run preview",
+    "check": "npm run check:all",
+    "check:all": "npm --workspaces --if-present run check",
+    "check:binita": "npm --workspace @homepage/binita run check",
+    "check:helloworld": "npm --workspace @homepage/helloworld run check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,tsx,json,md,yml,yaml}": "prettier --write",
+    "*.astro": "prettier --write"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "astro": "^5.9.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.8.3"
   }
 }

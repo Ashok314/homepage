@@ -36,10 +36,22 @@ export const siteContent: BusinessContent = {
       alt: "スパイスを使ったビニタのメインビジュアル"
     },
     slides: [
-      { src: "clients/binita/archive/all/mv01.png", alt: "Welcome to Indian Restaurant BINITA" },
-      { src: "clients/binita/archive/all/mv02.png", alt: "BINITA メインビジュアル 2" },
-      { src: "clients/binita/archive/all/mv03.png", alt: "BINITA メインビジュアル 3" },
-      { src: "clients/binita/archive/all/mv04.png", alt: "BINITA メインビジュアル 4" }
+      {
+        src: "clients/binita/archive/all/mv01.png",
+        alt: "Welcome to Indian Restaurant BINITA"
+      },
+      {
+        src: "clients/binita/archive/all/mv02.png",
+        alt: "BINITA メインビジュアル 2"
+      },
+      {
+        src: "clients/binita/archive/all/mv03.png",
+        alt: "BINITA メインビジュアル 3"
+      },
+      {
+        src: "clients/binita/archive/all/mv04.png",
+        alt: "BINITA メインビジュアル 4"
+      }
     ]
   },
   about: {
@@ -53,11 +65,15 @@ export const siteContent: BusinessContent = {
   },
   menu: {
     title: "メニュー",
-    notice: "※ Take Out OK！ランチメニューは全てお持ち帰りできます！\n　他メニュー多数あります。※ 店舗によって取り扱いメニュー・金額が異なることがありますので、ご了承ください。",
+    notice:
+      "※ Take Out OK！ランチメニューは全てお持ち帰りできます！\n　他メニュー多数あります。※ 店舗によって取り扱いメニュー・金額が異なることがありますので、ご了承ください。",
     groups: [
       {
         title: "ランチ",
-        image: { src: "clients/binita/archive/all/img04-200x150.jpg", alt: "海老チーズカレー" },
+        image: {
+          src: "clients/binita/archive/all/img04-200x150.jpg",
+          alt: "海老チーズカレー"
+        },
         price: "700円〜",
         description: "ランチメニュー",
         items: [
@@ -71,7 +87,10 @@ export const siteContent: BusinessContent = {
       },
       {
         title: "お得なランチセット",
-        image: { src: "clients/binita/archive/all/img10-200x150.jpg", alt: "ビニタスペシャルランチセット" },
+        image: {
+          src: "clients/binita/archive/all/img10-200x150.jpg",
+          alt: "ビニタスペシャルランチセット"
+        },
         price: "800円〜",
         description: "お得なランチセット",
         items: [
@@ -82,7 +101,10 @@ export const siteContent: BusinessContent = {
       },
       {
         title: "ディナー",
-        image: { src: "clients/binita/archive/all/img03-200x150.jpg", alt: "ゴマスープカレー" },
+        image: {
+          src: "clients/binita/archive/all/img03-200x150.jpg",
+          alt: "ゴマスープカレー"
+        },
         price: "750円〜",
         description: "ディナーおすすめ",
         items: [
@@ -93,7 +115,10 @@ export const siteContent: BusinessContent = {
       },
       {
         title: "ディナースペシャル",
-        image: { src: "clients/binita/archive/all/img05-200x150.jpg", alt: "2色カレーライスセット" },
+        image: {
+          src: "clients/binita/archive/all/img05-200x150.jpg",
+          alt: "2色カレーライスセット"
+        },
         price: "1,150円〜",
         description: "ディナースペシャル",
         items: [
@@ -104,16 +129,23 @@ export const siteContent: BusinessContent = {
       },
       {
         title: "ナン",
-        image: { src: "clients/binita/archive/all/img09-200x150.jpg", alt: "ナン" },
+        image: {
+          src: "clients/binita/archive/all/img09-200x150.jpg",
+          alt: "ナン"
+        },
         price: "300円〜",
         description: "ナン、チーズナンなど。お持ち帰りできます。",
         items: []
       },
       {
         title: "炭焼き一品料理",
-        image: { src: "clients/binita/archive/all/img10-200x150.jpg", alt: "タンドリー料理" },
+        image: {
+          src: "clients/binita/archive/all/img10-200x150.jpg",
+          alt: "タンドリー料理"
+        },
         price: "300円〜",
-        description: "炭焼きラムティッカ、ハリヤリチキン、ゴマチキンパコラなど。",
+        description:
+          "炭焼きラムティッカ、ハリヤリチキン、ゴマチキンパコラなど。",
         items: []
       },
       {
@@ -125,13 +157,15 @@ export const siteContent: BusinessContent = {
       {
         title: "ソフトドリンク -Soft Drink-",
         price: "300円〜",
-        description: "ラッシー、コーヒー、チャイ、コカコーラ、ジンジャーエール、マンゴージュースなど。",
+        description:
+          "ラッシー、コーヒー、チャイ、コカコーラ、ジンジャーエール、マンゴージュースなど。",
         items: []
       },
       {
         title: "アルコール -Alcohols-",
         price: "390円〜",
-        description: "ビール、カクテル、ウォッカ、ワイン、ウイスキー、焼酎など。",
+        description:
+          "ビール、カクテル、ウォッカ、ワイン、ウイスキー、焼酎など。",
         items: []
       }
     ]
@@ -140,14 +174,32 @@ export const siteContent: BusinessContent = {
     phone: "03-5994-0840",
     address: "東京都板橋区小豆沢2-19-13",
     hours: ["10:30〜24:00"],
-    details: ["志村坂上駅 徒歩2分", "定休日 年中無休", "座席数 50席", "最低貸切人数 45名〜"],
-    mapEmbedUrl: "https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%9D%BF%E6%A9%8B%E5%8C%BA%E5%B0%8F%E8%B1%86%E6%B2%A22-19-13&output=embed",
+    details: [
+      "志村坂上駅 徒歩2分",
+      "定休日 年中無休",
+      "座席数 50席",
+      "最低貸切人数 45名〜"
+    ],
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%9D%BF%E6%A9%8B%E5%8C%BA%E5%B0%8F%E8%B1%86%E6%B2%A22-19-13&output=embed",
     mapUrl: "https://maps.app.goo.gl/sL5r7YyRZmaF3PYs8",
     photos: [
-      { src: "clients/binita/archive/access/azusawa-entrance.jpg", alt: "小豆沢店入り口" },
-      { src: "clients/binita/archive/access/azusawa-table-1.jpg", alt: "小豆沢店テーブル席" },
-      { src: "clients/binita/archive/access/azusawa-table-2.jpg", alt: "小豆沢店テーブル席2" },
-      { src: "clients/binita/archive/access/azusawa-landmark.jpg", alt: "小豆沢店目印" }
+      {
+        src: "clients/binita/archive/access/azusawa-entrance.jpg",
+        alt: "小豆沢店入り口"
+      },
+      {
+        src: "clients/binita/archive/access/azusawa-table-1.jpg",
+        alt: "小豆沢店テーブル席"
+      },
+      {
+        src: "clients/binita/archive/access/azusawa-table-2.jpg",
+        alt: "小豆沢店テーブル席2"
+      },
+      {
+        src: "clients/binita/archive/access/azusawa-landmark.jpg",
+        alt: "小豆沢店目印"
+      }
     ]
   },
   banner: {
@@ -172,12 +224,12 @@ export const siteContent: BusinessContent = {
     ]
   },
   posts: [
-     {
+    {
       title: "リニューアル",
       date: "2026-06-07",
       text: "サイトをリニューアルしました。今後も最新情報をお届けしていきますので、よろしくお願いいたします！"
-    }
-    ,{
+    },
+    {
       title: "ビニタ小豆沢店の店舗情報を掲載しました",
       date: "2016-04-19",
       text: "住所、営業時間、座席数、貸切人数など、小豆沢店の情報を旧サイトから整理して掲載しています。"
@@ -186,37 +238,40 @@ export const siteContent: BusinessContent = {
       title: "パーティーコース承ります",
       date: "2016-04-19",
       text: "ご予算に合わせてコース料理をご用意します。宴会、お祝い、打ち合わせなどにもご利用いただけます。"
-    },
-    
+    }
   ],
   webOrder: {
     title: "WEB注文",
     links: [
-      { 
-        label: "出前館", 
+      {
+        label: "出前館",
         logo: { src: "shared/demae-can-logo.svg", alt: "出前館ロゴ" },
-        logoText: "出前館", 
+        logoText: "出前館",
         href: "https://demae-can.com/shop/menu/3016051",
         rating: "★ 4.5(455件) 2026年6月現在",
         campaign: "3500円以上で10%OFFキャンペーン中！"
       },
-      { 
-        label: "Uber Eats", 
+      {
+        label: "Uber Eats",
         logo: { src: "shared/uber-eats-logo.svg", alt: "Uber Eatsロゴ" },
-        logoText: "Uber Eats", 
+        logoText: "Uber Eats",
         href: "https://www.ubereats.com/jp/store/%E3%83%92%E3%83%8B%E3%82%BF-%E5%B0%8F%E8%B1%86%E6%B2%A2%E5%BA%97-binita-azusawaten/Hp-epwfjTtmzqbymTxub9g",
         rating: "★ 4.7(700件+) 2026年6月現在",
         campaign: "1 個頼むと商品 1 つが無料になるキャンペーン中！"
-      },
+      }
     ]
   },
   party: {
     title: "パーティー",
     subtitle: "ビニタでパーティーしませんか？",
-    description: "美味しいインド料理のコースを予算に合わせてご用意致します。貸切にも対応しておりますので、宴会・お祝い・打ち合わせ等どんなシーンでもご利用いただけます。",
+    description:
+      "美味しいインド料理のコースを予算に合わせてご用意致します。貸切にも対応しておりますので、宴会・お祝い・打ち合わせ等どんなシーンでもご利用いただけます。",
     notice: "ご予約の際、「ホームページを見た」で飲放題90分⇒120分へ！",
     summary: {
-      image: { src: "clients/binita/archive/all/img10-200x150.jpg", alt: "ビニタコース料理例" },
+      image: {
+        src: "clients/binita/archive/all/img10-200x150.jpg",
+        alt: "ビニタコース料理例"
+      },
       title: "小豆沢店貸切人数",
       text: [
         "<strong>45名〜</strong>貸切OK！",
@@ -241,7 +296,8 @@ export const siteContent: BusinessContent = {
         title: "パーティーコースB",
         price: "90分プレミアム飲み放題付き 3,800円",
         food: "サラダ、前菜、タンドリーチキン1/2P、シーシカバブ2P、手羽先1P、ナンまたはライス、カレー1種類",
-        drink: "ソフトドリンク、生ビール、カクテル、焼酎、ウォッカ、ブランデー、インドワイン、ジョニ黒、ジョニ赤"
+        drink:
+          "ソフトドリンク、生ビール、カクテル、焼酎、ウォッカ、ブランデー、インドワイン、ジョニ黒、ジョニ赤"
       }
     ]
   },
@@ -249,8 +305,11 @@ export const siteContent: BusinessContent = {
     title: "お支払い方法",
     description: "当店では現金に加えて、以下の決済方法をご利用いただけます。",
     methods: [
-      {label: "現金", items: "日本円" },
-      { label: "クレジットカード", items: "VISA, Mastercard, JCB, American Express, Diners Club" },
+      { label: "現金", items: "日本円" },
+      {
+        label: "クレジットカード",
+        items: "VISA, Mastercard, JCB, American Express, Diners Club"
+      },
       { label: "QRコード決済", items: "PayPay, " }
     ]
   },

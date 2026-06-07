@@ -16,7 +16,9 @@ const { hero } = Astro.props;
     <span>{hero.text}</span>
     <div class="hero__actions">
       <Button href={hero.primaryAction.href}>{hero.primaryAction.label}</Button>
-      <Button href={hero.secondaryAction.href} variant="secondary">{hero.secondaryAction.label}</Button>
+      <Button href={hero.secondaryAction.href} variant="secondary"
+        >{hero.secondaryAction.label}</Button
+      >
     </div>
   </div>
   <div class="hero__media">
@@ -76,7 +78,8 @@ const { hero } = Astro.props;
     letter-spacing: 0.04em;
     line-height: 1;
     margin: 0;
-    text-shadow: 0 2px 0 color-mix(in srgb, var(--color-accent) 32%, transparent);
+    text-shadow: 0 2px 0
+      color-mix(in srgb, var(--color-accent) 32%, transparent);
   }
 
   span {

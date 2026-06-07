@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SITE_ORIGIN: https://ashok314.github.io
+      PAGES_ROOT: /homepage
+      DEPLOY_APPS: "binita helloworld"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,17 +29,32 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build site
-        run: npm run build
+      - name: Build and assemble Pages artifact
+        run: |
+          set -eu
+          mkdir -p dist
+          for app in $DEPLOY_APPS; do
+            base_path="${PAGES_ROOT}/${app}/"
+            site_url="${SITE_ORIGIN}${base_path}"
+
+            echo "Building ${app} -> ${base_path}"
+            PUBLIC_BASE_PATH="$base_path" \
+            PUBLIC_SITE_URL="$site_url" \
+            npm --workspace "@homepage/${app}" run build
+
+            mkdir -p "dist/${app}"
+            cp -R "apps/${app}/dist/." "dist/${app}/"
+          done
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/binita/dist
+          path: dist
 
   deploy:
     environment:

@@ -15,27 +15,35 @@ const { contact } = Astro.props;
       <strong>住所</strong>
       <span>{contact.address}</span>
       <strong>電話番号</strong>
-      <a href={`tel:${contact.phone.replaceAll(/[^+\d]/g, "")}`}>{contact.phone}</a>
-      {contact.email && (
-        <>
-          <strong>メール</strong>
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        </>
-      )}
+      <a href={`tel:${contact.phone.replaceAll(/[^+\d]/g, "")}`}
+        >{contact.phone}</a
+      >
+      {
+        contact.email && (
+          <>
+            <strong>メール</strong>
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </>
+        )
+      }
     </address>
     <div>
       <h3>営業時間</h3>
       <ul>
         {contact.hours.map((line) => <li>{line}</li>)}
       </ul>
-      {contact.details && (
-        <>
-          <h3>詳細</h3>
-          <ul>
-            {contact.details.map((line) => <li>{line}</li>)}
-          </ul>
-        </>
-      )}
+      {
+        contact.details && (
+          <>
+            <h3>詳細</h3>
+            <ul>
+              {contact.details.map((line) => (
+                <li>{line}</li>
+              ))}
+            </ul>
+          </>
+        )
+      }
     </div>
   </div>
 </Section>

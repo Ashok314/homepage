@@ -12,27 +12,36 @@ const groups = menu.groups ?? [{ title: "Menu", items: menu.items ?? [] }];
 
 <Section id="menu" eyebrow="メニュー" title={menu.title} intro={menu.intro}>
   <div class="menu">
-    {groups.map((group) => (
-      <section class="menu__group" aria-labelledby={`menu-${group.title.toLowerCase().replaceAll(" ", "-")}`}>
-        <h3 id={`menu-${group.title.toLowerCase().replaceAll(" ", "-")}`}>{group.title}</h3>
-        <div class="menu__items">
-          {group.items.map((item) => (
-            <article>
-              <div>
-                <h4>{item.name}</h4>
-                <p>{item.description}</p>
-                {item.tags && (
-                  <ul aria-label={`${item.name} tags`}>
-                    {item.tags.map((tag) => <li>{tag}</li>)}
-                  </ul>
-                )}
-              </div>
-              {item.price && <strong>{item.price}</strong>}
-            </article>
-          ))}
-        </div>
-      </section>
-    ))}
+    {
+      groups.map((group) => (
+        <section
+          class="menu__group"
+          aria-labelledby={`menu-${group.title.toLowerCase().replaceAll(" ", "-")}`}
+        >
+          <h3 id={`menu-${group.title.toLowerCase().replaceAll(" ", "-")}`}>
+            {group.title}
+          </h3>
+          <div class="menu__items">
+            {group.items.map((item) => (
+              <article>
+                <div>
+                  <h4>{item.name}</h4>
+                  <p>{item.description}</p>
+                  {item.tags && (
+                    <ul aria-label={`${item.name} tags`}>
+                      {item.tags.map((tag) => (
+                        <li>{tag}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                {item.price && <strong>{item.price}</strong>}
+              </article>
+            ))}
+          </div>
+        </section>
+      ))
+    }
   </div>
 </Section>
 

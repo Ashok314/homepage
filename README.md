@@ -29,7 +29,11 @@ npm install
 npm run dev
 npm run build
 npm run preview
+npm run check
+npm run format:check
 ```
+
+Default `dev` and `preview` target Binita for convenience. Use the app-specific variants such as `npm run dev:helloworld`, `npm run build:binita`, or `npm run check:all` when needed.
 
 ## Architecture
 
@@ -44,13 +48,18 @@ This keeps content separate from presentation while avoiding a CMS, database, or
 
 ## Deployment
 
-GitHub Actions builds the Astro site and publishes `apps/binita/dist` to GitHub Pages.
+GitHub Actions builds the deployed apps and publishes a combined Pages artifact. Each app is built with its own `PUBLIC_BASE_PATH` and `PUBLIC_SITE_URL`, then copied into its own subpath inside the final `dist/` output.
 
 In repository settings, set Pages source to **GitHub Actions**. The workflow is in `.github/workflows/deploy-pages.yml`.
 
-## Current Client
+To add another deployed app, add its app name to `DEPLOY_APPS` in `.github/workflows/deploy-pages.yml`. The workflow will build `@homepage/<app>` and publish it under `/homepage/<app>/`.
 
-`apps/binita` is the active build. Azusawa is the only active branch in the current website. Older branches are kept as branch history in content, not as active customer locations.
+## Current Apps
+
+- `apps/binita` is the primary client site.
+- `apps/helloworld` is a minimal test app used to verify multi-app Pages deployment.
+
+Azusawa is the only active branch in the current Binita website. Older branches are kept as branch history in content, not as active customer locations.
 
 ## Adding A Client
 

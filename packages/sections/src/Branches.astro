@@ -8,35 +8,50 @@ type Props = {
 
 const { branches } = Astro.props;
 const activeBranches = branches.filter((branch) => branch.status === "active");
-const historicalBranches = branches.filter((branch) => branch.status !== "active");
+const historicalBranches = branches.filter(
+  (branch) => branch.status !== "active"
+);
 ---
 
 <Section id="branches" eyebrow="店舗" title="店舗情報">
   <div class="branches">
     <div class="branches__panel">
       <h3>掲載店舗</h3>
-      {activeBranches.map((branch) => (
-        <article>
-          <span class="status status--active">営業情報</span>
-          <h4>{branch.name}</h4>
-          {branch.address && <p>{branch.address}</p>}
-          {branch.phone && <a href={`tel:${branch.phone.replaceAll(/[^+\d]/g, "")}`}>{branch.phone}</a>}
-          {branch.note && <small>{branch.note}</small>}
-        </article>
-      ))}
+      {
+        activeBranches.map((branch) => (
+          <article>
+            <span class="status status--active">営業情報</span>
+            <h4>{branch.name}</h4>
+            {branch.address && <p>{branch.address}</p>}
+            {branch.phone && (
+              <a href={`tel:${branch.phone.replaceAll(/[^+\d]/g, "")}`}>
+                {branch.phone}
+              </a>
+            )}
+            {branch.note && <small>{branch.note}</small>}
+          </article>
+        ))
+      }
     </div>
     <div class="branches__panel branches__panel--history">
       <h3>旧店舗情報</h3>
-      {historicalBranches.map((branch) => (
-        <article>
-          <span class:list={["status", branch.status === "verification-required" && "status--todo"]}>
-            {branch.status === "history" ? "旧サイト掲載" : "旧店舗"}
-          </span>
-          <h4>{branch.name}</h4>
-          {branch.address && <p>{branch.address}</p>}
-          {branch.note && <small>{branch.note}</small>}
-        </article>
-      ))}
+      {
+        historicalBranches.map((branch) => (
+          <article>
+            <span
+              class:list={[
+                "status",
+                branch.status === "verification-required" && "status--todo"
+              ]}
+            >
+              {branch.status === "history" ? "旧サイト掲載" : "旧店舗"}
+            </span>
+            <h4>{branch.name}</h4>
+            {branch.address && <p>{branch.address}</p>}
+            {branch.note && <small>{branch.note}</small>}
+          </article>
+        ))
+      }
     </div>
   </div>
 </Section>
@@ -56,7 +71,11 @@ const historicalBranches = branches.filter((branch) => branch.status !== "active
   }
 
   .branches__panel--history {
-    background: color-mix(in srgb, var(--color-surface) 84%, var(--color-border));
+    background: color-mix(
+      in srgb,
+      var(--color-surface) 84%,
+      var(--color-border)
+    );
   }
 
   h3 {

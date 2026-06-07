@@ -9,19 +9,21 @@ type Props = {
 const { posts } = Astro.props;
 ---
 
-{posts.length > 0 && (
-  <Section id="news" eyebrow="お知らせ" title="新着情報">
-    <div class="news">
-      {posts.map((post) => (
-        <article>
-          <time datetime={post.date}>{post.date}</time>
-          <h3>{post.title}</h3>
-          <p>{post.text}</p>
-        </article>
-      ))}
-    </div>
-  </Section>
-)}
+{
+  posts.length > 0 && (
+    <Section id="news" eyebrow="お知らせ" title="新着情報">
+      <div class="news">
+        {posts.map((post) => (
+          <article>
+            <time datetime={post.date}>{post.date}</time>
+            <h3>{post.title}</h3>
+            <p>{post.text}</p>
+          </article>
+        ))}
+      </div>
+    </Section>
+  )
+}
 
 <style>
   .news {

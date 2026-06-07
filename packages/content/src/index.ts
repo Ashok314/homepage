@@ -149,6 +149,11 @@ export type BusinessContent = {
     description: string;
     notice: string;
     summary: { image: ImageAsset; title: string; text: string[] };
-    courses: Array<{ title: string; price: string; food: string; drink: string }>;
+    courses: Array<{
+      title: string;
+      price: string;
+      food: string;
+      drink: string;
+    }>;
   };
 };

@@ -8,16 +8,18 @@ type Props = {
 const { contact } = Astro.props;
 ---
 
-{contact.mapEmbedUrl && (
-  <section class="map" aria-label="地図">
-    <iframe
-      src={contact.mapEmbedUrl}
-      title={`${contact.address}の地図`}
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    />
-  </section>
-)}
+{
+  contact.mapEmbedUrl && (
+    <section class="map" aria-label="地図">
+      <iframe
+        src={contact.mapEmbedUrl}
+        title={`${contact.address}の地図`}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      />
+    </section>
+  )
+}
 
 <style>
   .map {

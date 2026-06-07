@@ -30,7 +30,10 @@ const schema = {
 ---
 
 <!doctype html>
-<html lang="ja" style={`${themeToCssVars(theme)}; --page-background-image: url("${archiveBackground}")`}>
+<html
+  lang="ja"
+  style={`${themeToCssVars(theme)}; --page-background-image: url("${archiveBackground}")`}
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,7 +46,11 @@ const schema = {
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema)}
+    />
   </head>
   <body>
     <slot />
@@ -58,9 +65,7 @@ const schema = {
   }
 
   html {
-    background:
-      var(--page-background-image),
-      var(--color-background);
+    background: var(--page-background-image), var(--color-background);
     color: var(--color-text);
     font-family: var(--font-body);
     scroll-behavior: smooth;

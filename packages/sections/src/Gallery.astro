@@ -11,7 +11,11 @@ const { gallery } = Astro.props;
 
 <Section id="gallery" eyebrow="写真" title="料理写真">
   <div class="gallery">
-    {gallery.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
+    {
+      gallery.map((image) => (
+        <img src={image.src} alt={image.alt} loading="lazy" />
+      ))
+    }
   </div>
 </Section>
 

@@ -11,12 +11,14 @@ const { testimonials } = Astro.props;
 
 <Section id="testimonials" eyebrow="Guests" title="Loved by the neighborhood">
   <div class="testimonials">
-    {testimonials.map((testimonial) => (
-      <figure>
-        <blockquote>{testimonial.quote}</blockquote>
-        <figcaption>{testimonial.author}</figcaption>
-      </figure>
-    ))}
+    {
+      testimonials.map((testimonial) => (
+        <figure>
+          <blockquote>{testimonial.quote}</blockquote>
+          <figcaption>{testimonial.author}</figcaption>
+        </figure>
+      ))
+    }
   </div>
 </Section>
 
@@ -41,7 +43,11 @@ const { testimonials } = Astro.props;
   }
 
   figcaption {
-    color: color-mix(in srgb, var(--color-primary-text) 82%, var(--color-accent));
+    color: color-mix(
+      in srgb,
+      var(--color-primary-text) 82%,
+      var(--color-accent)
+    );
     font-weight: 850;
     margin-top: 1rem;
   }
