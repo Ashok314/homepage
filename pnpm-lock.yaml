@@ -13,6 +13,9 @@ importers:
       astro:
         specifier: ^5.9.3
         version: 5.18.2(rollup@4.61.1)(typescript@5.9.3)(yaml@2.9.0)
+      concurrently:
+        specifier: ^10.0.3
+        version: 10.0.3
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -28,6 +31,72 @@ importers:
       typescript:
         specifier: ^5.8.3
         version: 5.9.3
+
+  apps/binita:
+    dependencies:
+      "@homepage/content":
+        specifier: workspace:*
+        version: link:../../packages/content
+      "@homepage/sections":
+        specifier: workspace:*
+        version: link:../../packages/sections
+      "@homepage/themes":
+        specifier: workspace:*
+        version: link:../../packages/themes
+      "@homepage/ui":
+        specifier: workspace:*
+        version: link:../../packages/ui
+      astro:
+        specifier: ^5.9.3
+        version: 5.18.2(rollup@4.61.1)(typescript@5.9.3)(yaml@2.9.0)
+    devDependencies:
+      "@astrojs/check":
+        specifier: ^0.9.4
+        version: 0.9.9(prettier-plugin-astro@0.14.1)(prettier@3.8.3)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
+
+  apps/helloworld:
+    dependencies:
+      astro:
+        specifier: ^5.9.3
+        version: 5.18.2(rollup@4.61.1)(typescript@5.9.3)(yaml@2.9.0)
+    devDependencies:
+      "@astrojs/check":
+        specifier: ^0.9.4
+        version: 0.9.9(prettier-plugin-astro@0.14.1)(prettier@3.8.3)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
+
+  apps/home:
+    dependencies:
+      astro:
+        specifier: ^5.9.3
+        version: 5.18.2(rollup@4.61.1)(typescript@5.9.3)(yaml@2.9.0)
+    devDependencies:
+      "@astrojs/check":
+        specifier: ^0.9.4
+        version: 0.9.9(prettier-plugin-astro@0.14.1)(prettier@3.8.3)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
+
+  packages/content: {}
+
+  packages/sections:
+    dependencies:
+      "@homepage/content":
+        specifier: workspace:*
+        version: link:../content
+      "@homepage/ui":
+        specifier: workspace:*
+        version: link:../ui
+
+  packages/themes: {}
+
+  packages/ui: {}
 
 packages:
   "@astrojs/check@0.9.9":
@@ -692,7 +761,6 @@ packages:
       }
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-libvips-linux-arm@1.2.4":
     resolution:
@@ -701,7 +769,6 @@ packages:
       }
     cpu: [arm]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-libvips-linux-ppc64@1.2.4":
     resolution:
@@ -710,7 +777,6 @@ packages:
       }
     cpu: [ppc64]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-libvips-linux-riscv64@1.2.4":
     resolution:
@@ -719,7 +785,6 @@ packages:
       }
     cpu: [riscv64]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-libvips-linux-s390x@1.2.4":
     resolution:
@@ -728,7 +793,6 @@ packages:
       }
     cpu: [s390x]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-libvips-linux-x64@1.2.4":
     resolution:
@@ -737,7 +801,6 @@ packages:
       }
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-libvips-linuxmusl-arm64@1.2.4":
     resolution:
@@ -746,7 +809,6 @@ packages:
       }
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   "@img/sharp-libvips-linuxmusl-x64@1.2.4":
     resolution:
@@ -755,7 +817,6 @@ packages:
       }
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   "@img/sharp-linux-arm64@0.34.5":
     resolution:
@@ -765,7 +826,6 @@ packages:
     engines: { node: ^18.17.0 || ^20.3.0 || >=21.0.0 }
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-linux-arm@0.34.5":
     resolution:
@@ -775,7 +835,6 @@ packages:
     engines: { node: ^18.17.0 || ^20.3.0 || >=21.0.0 }
     cpu: [arm]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-linux-ppc64@0.34.5":
     resolution:
@@ -785,7 +844,6 @@ packages:
     engines: { node: ^18.17.0 || ^20.3.0 || >=21.0.0 }
     cpu: [ppc64]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-linux-riscv64@0.34.5":
     resolution:
@@ -795,7 +853,6 @@ packages:
     engines: { node: ^18.17.0 || ^20.3.0 || >=21.0.0 }
     cpu: [riscv64]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-linux-s390x@0.34.5":
     resolution:
@@ -805,7 +862,6 @@ packages:
     engines: { node: ^18.17.0 || ^20.3.0 || >=21.0.0 }
     cpu: [s390x]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-linux-x64@0.34.5":
     resolution:
@@ -815,7 +871,6 @@ packages:
     engines: { node: ^18.17.0 || ^20.3.0 || >=21.0.0 }
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   "@img/sharp-linuxmusl-arm64@0.34.5":
     resolution:
@@ -825,7 +880,6 @@ packages:
     engines: { node: ^18.17.0 || ^20.3.0 || >=21.0.0 }
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   "@img/sharp-linuxmusl-x64@0.34.5":
     resolution:
@@ -835,7 +889,6 @@ packages:
     engines: { node: ^18.17.0 || ^20.3.0 || >=21.0.0 }
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   "@img/sharp-wasm32@0.34.5":
     resolution:
@@ -951,7 +1004,6 @@ packages:
       }
     cpu: [arm]
     os: [linux]
-    libc: [glibc]
 
   "@rollup/rollup-linux-arm-musleabihf@4.61.1":
     resolution:
@@ -960,7 +1012,6 @@ packages:
       }
     cpu: [arm]
     os: [linux]
-    libc: [musl]
 
   "@rollup/rollup-linux-arm64-gnu@4.61.1":
     resolution:
@@ -969,7 +1020,6 @@ packages:
       }
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   "@rollup/rollup-linux-arm64-musl@4.61.1":
     resolution:
@@ -978,7 +1028,6 @@ packages:
       }
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   "@rollup/rollup-linux-loong64-gnu@4.61.1":
     resolution:
@@ -987,7 +1036,6 @@ packages:
       }
     cpu: [loong64]
     os: [linux]
-    libc: [glibc]
 
   "@rollup/rollup-linux-loong64-musl@4.61.1":
     resolution:
@@ -996,7 +1044,6 @@ packages:
       }
     cpu: [loong64]
     os: [linux]
-    libc: [musl]
 
   "@rollup/rollup-linux-ppc64-gnu@4.61.1":
     resolution:
@@ -1005,7 +1052,6 @@ packages:
       }
     cpu: [ppc64]
     os: [linux]
-    libc: [glibc]
 
   "@rollup/rollup-linux-ppc64-musl@4.61.1":
     resolution:
@@ -1014,7 +1060,6 @@ packages:
       }
     cpu: [ppc64]
     os: [linux]
-    libc: [musl]
 
   "@rollup/rollup-linux-riscv64-gnu@4.61.1":
     resolution:
@@ -1023,7 +1068,6 @@ packages:
       }
     cpu: [riscv64]
     os: [linux]
-    libc: [glibc]
 
   "@rollup/rollup-linux-riscv64-musl@4.61.1":
     resolution:
@@ -1032,7 +1076,6 @@ packages:
       }
     cpu: [riscv64]
     os: [linux]
-    libc: [musl]
 
   "@rollup/rollup-linux-s390x-gnu@4.61.1":
     resolution:
@@ -1041,7 +1084,6 @@ packages:
       }
     cpu: [s390x]
     os: [linux]
-    libc: [glibc]
 
   "@rollup/rollup-linux-x64-gnu@4.61.1":
     resolution:
@@ -1050,7 +1092,6 @@ packages:
       }
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   "@rollup/rollup-linux-x64-musl@4.61.1":
     resolution:
@@ -1059,7 +1100,6 @@ packages:
       }
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   "@rollup/rollup-openbsd-x64@4.61.1":
     resolution:
@@ -1469,6 +1509,13 @@ packages:
       }
     engines: { node: ">=12" }
 
+  cliui@9.0.1:
+    resolution:
+      {
+        integrity: sha512-k7ndgKhwoQveBL+/1tqGJYNz097I7WOvwbmmU2AR5+magtbjPWQTS1C5vzGkBC8Ym8UWRzfKUzUUqFLypY4Q+w==
+      }
+    engines: { node: ">=20" }
+
   clsx@2.1.1:
     resolution:
       {
@@ -1507,6 +1554,14 @@ packages:
       {
         integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==
       }
+
+  concurrently@10.0.3:
+    resolution:
+      {
+        integrity: sha512-hc3LH4UaKWd/bbyDK/IGVa4RB6PtQ3CUYwtrkzqHn+wIG3Hr5fhpRlk0L/gCa8ZE1L/Ufj50Zho69cI5w8SQBA==
+      }
+    engines: { node: ">=22" }
+    hasBin: true
 
   cookie-es@1.2.3:
     resolution:
@@ -2726,6 +2781,12 @@ packages:
     engines: { node: ">=18.0.0", npm: ">=8.0.0" }
     hasBin: true
 
+  rxjs@7.8.2:
+    resolution:
+      {
+        integrity: sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==
+      }
+
   s.color@0.0.15:
     resolution:
       {
@@ -2759,6 +2820,13 @@ packages:
         integrity: sha512-Ou9I5Ft9WNcCbXrU9cMgPBcCK8LiwLqcbywW3t4oDV37n1pzpuNLsYiAV8eODnjbtQlSDwZ2cUEeQz4E54Hltg==
       }
     engines: { node: ^18.17.0 || ^20.3.0 || >=21.0.0 }
+
+  shell-quote@1.8.4:
+    resolution:
+      {
+        integrity: sha512-VsC6n6vz1ihYYyZZwX7YZSF5l5x36ca17OC+a69h94YqB7X6XLwf+5MOgynYir2SLFUbl8gIYvBo8K8RoNQ6bQ==
+      }
+    engines: { node: ">= 0.4" }
 
   shiki@3.23.0:
     resolution:
@@ -2867,6 +2935,13 @@ packages:
         integrity: sha512-KvC8OPjzdNOe+xQ4XWJV2whQA0aM1kGVczMQ8+dStAO6KfEB140JEVQ9dE76ONZ0/Ylf67ni4tILPJB41U0eow==
       }
 
+  supports-color@10.2.2:
+    resolution:
+      {
+        integrity: sha512-SS+jx45GF1QjgEXQx4NJZV9ImqmO2NPz5FNsIHrsDjh2YsHnawpan7SNQ1o8NuhrbHZy9AZhIoCUiCeaW/C80g==
+      }
+    engines: { node: ">=18" }
+
   svgo@4.0.1:
     resolution:
       {
@@ -2894,6 +2969,13 @@ packages:
         integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==
       }
     engines: { node: ">=12.0.0" }
+
+  tree-kill@1.2.2:
+    resolution:
+      {
+        integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
+      }
+    hasBin: true
 
   trim-lines@3.0.1:
     resolution:
@@ -3420,12 +3502,26 @@ packages:
       }
     engines: { node: ">=12" }
 
+  yargs-parser@22.0.0:
+    resolution:
+      {
+        integrity: sha512-rwu/ClNdSMpkSrUb+d6BRsSkLUq1fmfsY6TOpYzTwvwkg1/NRG85KBy3kq++A8LKQwX6lsu+aWad+2khvuXrqw==
+      }
+    engines: { node: ^20.19.0 || ^22.12.0 || >=23 }
+
   yargs@17.7.2:
     resolution:
       {
         integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==
       }
     engines: { node: ">=12" }
+
+  yargs@18.0.0:
+    resolution:
+      {
+        integrity: sha512-4UEqdc2RYGHZc7Doyqkrqiln3p9X2DZVxaGbwhn2pi7MrRagKaOcIKe8L3OxYcbhXLgLFUS3zAYuQjKBQgmuNg==
+      }
+    engines: { node: ^20.19.0 || ^22.12.0 || >=23 }
 
   yocto-queue@1.2.2:
     resolution:
@@ -4259,6 +4355,12 @@ snapshots:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
 
+  cliui@9.0.1:
+    dependencies:
+      string-width: 7.2.0
+      strip-ansi: 7.2.0
+      wrap-ansi: 9.0.2
+
   clsx@2.1.1: {}
 
   color-convert@2.0.1:
@@ -4272,6 +4374,15 @@ snapshots:
   commander@11.1.0: {}
 
   common-ancestor-path@1.0.1: {}
+
+  concurrently@10.0.3:
+    dependencies:
+      chalk: 5.6.2
+      rxjs: 7.8.2
+      shell-quote: 1.8.4
+      supports-color: 10.2.2
+      tree-kill: 1.2.2
+      yargs: 18.0.0
 
   cookie-es@1.2.3: {}
 
@@ -5231,6 +5342,10 @@ snapshots:
       "@rollup/rollup-win32-x64-msvc": 4.61.1
       fsevents: 2.3.3
 
+  rxjs@7.8.2:
+    dependencies:
+      tslib: 2.8.1
+
   s.color@0.0.15: {}
 
   sass-formatter@0.7.9:
@@ -5272,6 +5387,8 @@ snapshots:
       "@img/sharp-win32-ia32": 0.34.5
       "@img/sharp-win32-x64": 0.34.5
     optional: true
+
+  shell-quote@1.8.4: {}
 
   shiki@3.23.0:
     dependencies:
@@ -5340,6 +5457,8 @@ snapshots:
     dependencies:
       s.color: 0.0.15
 
+  supports-color@10.2.2: {}
+
   svgo@4.0.1:
     dependencies:
       commander: 11.1.0
@@ -5359,6 +5478,8 @@ snapshots:
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
 
+  tree-kill@1.2.2: {}
+
   trim-lines@3.0.1: {}
 
   trough@2.2.0: {}
@@ -5367,8 +5488,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.9.3
 
-  tslib@2.8.1:
-    optional: true
+  tslib@2.8.1: {}
 
   type-fest@4.41.0: {}
 
@@ -5642,6 +5762,8 @@ snapshots:
 
   yargs-parser@21.1.1: {}
 
+  yargs-parser@22.0.0: {}
+
   yargs@17.7.2:
     dependencies:
       cliui: 8.0.1
@@ -5651,6 +5773,15 @@ snapshots:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 21.1.1
+
+  yargs@18.0.0:
+    dependencies:
+      cliui: 9.0.1
+      escalade: 3.2.0
+      get-caller-file: 2.0.5
+      string-width: 7.2.0
+      y18n: 5.0.8
+      yargs-parser: 22.0.0
 
   yocto-queue@1.2.2: {}
 

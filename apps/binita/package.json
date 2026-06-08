@@ -10,10 +10,10 @@
     "check": "astro check"
   },
   "dependencies": {
-    "@homepage/content": "*",
-    "@homepage/sections": "*",
-    "@homepage/themes": "*",
-    "@homepage/ui": "*",
+    "@homepage/content": "workspace:*",
+    "@homepage/sections": "workspace:*",
+    "@homepage/themes": "workspace:*",
+    "@homepage/ui": "workspace:*",
     "astro": "^5.9.3"
   },
   "devDependencies": {

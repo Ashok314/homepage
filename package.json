@@ -11,9 +11,9 @@
   "scripts": {
     "dev": "pnpm run dev:all",
     "dev:all": "concurrently -n home,binita,helloworld -c blue,green,magenta \"pnpm run dev:home\" \"pnpm run dev:binita\" \"pnpm run dev:helloworld\"",
-    "dev:home": "pnpm --filter @homepage/home run dev -- --port 4321",
-    "dev:binita": "pnpm --filter @homepage/binita run dev -- --port 4322",
-    "dev:helloworld": "pnpm --filter @homepage/helloworld run dev -- --port 4323",
+    "dev:home": "pnpm --filter @homepage/home run dev --port 4321",
+    "dev:binita": "pnpm --filter @homepage/binita run dev --port 4322",
+    "dev:helloworld": "pnpm --filter @homepage/helloworld run dev --port 4323",
     "build": "pnpm run build:all",
     "build:all": "pnpm -r --if-present run build",
     "build:home": "pnpm --filter @homepage/home run build",
