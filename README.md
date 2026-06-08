@@ -25,7 +25,7 @@ homepage/
 ## Commands
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
 pnpm run dev
 pnpm run build
 pnpm run preview
@@ -33,7 +33,13 @@ pnpm run check
 pnpm run format:check
 ```
 
-Default `dev` and `preview` target the root home app for convenience. Use the app-specific variants such as `pnpm run dev:binita`, `pnpm run dev:helloworld`, `pnpm run build:home`, or `pnpm run check:all` when needed.
+Default `dev` starts all local app servers:
+
+- Home: `http://localhost:4321/`
+- Binita: `http://localhost:4322/`
+- Helloworld: `http://localhost:4323/`
+
+Use app-specific variants such as `pnpm run dev:binita`, `pnpm run dev:helloworld`, `pnpm run build:home`, `pnpm run build:binita`, or `pnpm run check:all` when needed. Default `preview` targets the root home app for convenience.
 
 ## Architecture
 
