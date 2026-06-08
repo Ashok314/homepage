@@ -54,17 +54,9 @@ In repository settings, set Pages source to **GitHub Actions**. The workflow is 
 
 To add another deployed app, add its app name to `DEPLOY_APPS` in `.github/workflows/deploy-pages.yml`. The workflow will build `@homepage/<app>` and publish it under `/homepage/<app>/`.
 
-For a standalone client deployment such as Binita on its own domain, build from the monorepo root with `pnpm run build:binita:standalone`. This switches Binita to a root-path build (`PUBLIC_BASE_PATH=/`) instead of the GitHub Pages subpath build. Set `PUBLIC_SITE_URL` to the final production origin when the domain is ready.
+For standalone client deployment on Vercel or a custom domain, build from the monorepo root with the app-specific standalone build script. Standalone builds use `PUBLIC_BASE_PATH=/`; set `PUBLIC_SITE_URL` to the final production origin when the domain is ready.
 
-For Vercel, keep the project rooted at the repository root and use:
-
-- Install command: `pnpm install --frozen-lockfile`
-- Build command: `pnpm run build:binita:standalone`
-- Output directory: `apps/binita/dist`
-
-The root `prepare` hook is CI-safe, so Husky is skipped in deployment environments such as Vercel.
-
-If the Vercel project is connected to GitHub, configuration and code changes must be committed and pushed before Vercel can build them from the repository.
+See `docs/vercel.md` for Vercel project settings.
 
 ## Current Apps
 
