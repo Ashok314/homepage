@@ -30,10 +30,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
+          cache: pnpm
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build and assemble Pages artifact
         run: |
@@ -46,7 +49,7 @@ jobs:
           echo "Building ${ROOT_APP} -> ${root_base_path}"
           PUBLIC_BASE_PATH="$root_base_path" \
           PUBLIC_SITE_URL="$root_site_url" \
-          npm --workspace "@homepage/${ROOT_APP}" run build
+          pnpm --filter "@homepage/${ROOT_APP}" run build
 
           cp -R "apps/${ROOT_APP}/dist/." dist/
 
@@ -57,7 +60,7 @@ jobs:
             echo "Building ${app} -> ${base_path}"
             PUBLIC_BASE_PATH="$base_path" \
             PUBLIC_SITE_URL="$site_url" \
-            npm --workspace "@homepage/${app}" run build
+            pnpm --filter "@homepage/${app}" run build
 
             mkdir -p "dist/${app}"
             cp -R "apps/${app}/dist/." "dist/${app}/"

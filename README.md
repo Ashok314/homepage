@@ -25,15 +25,15 @@ homepage/
 ## Commands
 
 ```bash
-npm install
-npm run dev
-npm run build
-npm run preview
-npm run check
-npm run format:check
+pnpm install
+pnpm run dev
+pnpm run build
+pnpm run preview
+pnpm run check
+pnpm run format:check
 ```
 
-Default `dev` and `preview` target the root home app for convenience. Use the app-specific variants such as `npm run dev:binita`, `npm run dev:helloworld`, `npm run build:home`, or `npm run check:all` when needed.
+Default `dev` and `preview` target the root home app for convenience. Use the app-specific variants such as `pnpm run dev:binita`, `pnpm run dev:helloworld`, `pnpm run build:home`, or `pnpm run check:all` when needed.
 
 ## Architecture
 
@@ -53,6 +53,18 @@ GitHub Actions builds the deployed apps and publishes a combined Pages artifact.
 In repository settings, set Pages source to **GitHub Actions**. The workflow is in `.github/workflows/deploy-pages.yml`.
 
 To add another deployed app, add its app name to `DEPLOY_APPS` in `.github/workflows/deploy-pages.yml`. The workflow will build `@homepage/<app>` and publish it under `/homepage/<app>/`.
+
+For a standalone client deployment such as Binita on its own domain, build from the monorepo root with `pnpm run build:binita:standalone`. This switches Binita to a root-path build (`PUBLIC_BASE_PATH=/`) instead of the GitHub Pages subpath build. Set `PUBLIC_SITE_URL` to the final production origin when the domain is ready.
+
+For Vercel, keep the project rooted at the repository root and use:
+
+- Install command: `pnpm install --frozen-lockfile`
+- Build command: `pnpm run build:binita:standalone`
+- Output directory: `apps/binita/dist`
+
+The root `prepare` hook is CI-safe, so Husky is skipped in deployment environments such as Vercel.
+
+If the Vercel project is connected to GitHub, configuration and code changes must be committed and pushed before Vercel can build them from the repository.
 
 ## Current Apps
 
