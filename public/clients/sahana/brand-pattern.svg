@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Sahana brand pattern</title>
+  <desc id="desc">A warm decorative pattern for the Sahana restaurant website.</desc>
+  <rect width="1200" height="720" fill="#fff8ec"/>
+  <g opacity=".16" fill="#c83f21">
+    <circle cx="168" cy="138" r="84"/>
+    <circle cx="1034" cy="574" r="116"/>
+    <circle cx="980" cy="142" r="52"/>
+  </g>
+  <g fill="none" stroke="#df9b2f" stroke-width="12" opacity=".42">
+    <path d="M100 560c138-92 260-88 366 12s236 110 390 6 262-114 344-52"/>
+    <path d="M0 224c118 72 232 68 342-10s216-82 318-12 210 68 324-10 188-80 216-72"/>
+  </g>
+  <g transform="translate(128 168)">
+    <rect width="944" height="384" rx="18" fill="#ffffff" opacity=".84"/>
+    <text x="472" y="160" text-anchor="middle" fill="#242016" font-family="Georgia, 'Times New Roman', serif" font-size="104" font-weight="700">SAHANA</text>
+    <text x="472" y="228" text-anchor="middle" fill="#6f5c44" font-family="Arial, sans-serif" font-size="34" font-weight="700">Indian Restaurant &amp; Bar</text>
+    <text x="472" y="294" text-anchor="middle" fill="#a5341d" font-family="Arial, sans-serif" font-size="28" font-weight="700">Koto / Asagaya</text>
+  </g>
+</svg>

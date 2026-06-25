@@ -7,6 +7,10 @@ type Props = {
 };
 
 const { hero } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const imageSrc = hero.image.src.startsWith("http")
+  ? hero.image.src
+  : `${base}${hero.image.src.replace(/^\/+/, "")}`;
 ---
 
 <section class="hero" id="top">
@@ -22,7 +26,7 @@ const { hero } = Astro.props;
     </div>
   </div>
   <div class="hero__media">
-    <img src={hero.image.src} alt={hero.image.alt} loading="eager" />
+    <img src={imageSrc} alt={hero.image.alt} loading="eager" />
   </div>
 </section>
 

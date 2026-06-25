@@ -3,6 +3,50 @@ export type NavItem = {
   href: string;
 };
 
+export type LocaleCode = "ja" | "ne" | "en" | (string & {});
+
+export type LocaleOption = {
+  code: LocaleCode;
+  label: string;
+  lang: string;
+  href?: string;
+};
+
+export type LocaleLabels = {
+  skipLink?: string;
+  mainNavigation?: string;
+  footerNavigation?: string;
+  languageNavigation?: string;
+  homeLabel?: string;
+  comingSoon?: string;
+  aboutEyebrow?: string;
+  featuresEyebrow?: string;
+  featuresTitle?: string;
+  galleryEyebrow?: string;
+  galleryTitle?: string;
+  menuEyebrow?: string;
+  menuFallbackTitle?: string;
+  newsEyebrow?: string;
+  newsTitle?: string;
+  branchesEyebrow?: string;
+  branchesTitle?: string;
+  branchesIntro?: string;
+  branchActive?: string;
+  branchVerification?: string;
+  openMap?: string;
+  mapLabel?: string;
+  webOrderEyebrow?: string;
+  enlargeImageLabel?: string;
+  imageDialogLabel?: string;
+  closeDialogLabel?: string;
+};
+
+export type LocaleConfig = {
+  defaultLocale: LocaleCode;
+  available: LocaleOption[];
+  labels?: LocaleLabels;
+};
+
 export type ImageAsset = {
   src: string;
   alt: string;
@@ -25,7 +69,7 @@ export type MenuGroup = {
   image?: ImageAsset;
   price?: string;
   description?: string;
-  items: MenuItem[];
+  items?: MenuItem[];
 };
 
 export type Testimonial = {
@@ -77,10 +121,13 @@ export type BranchLocation = {
   address?: string;
   phone?: string;
   hours?: string[];
+  mapEmbedUrl?: string;
+  mapUrl?: string;
   note?: string;
 };
 
 export type BusinessContent = {
+  locale?: LocaleConfig;
   business: {
     name: string;
     type: string;

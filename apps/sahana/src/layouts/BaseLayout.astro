@@ -1,0 +1,126 @@
+---
+import type { BusinessContent } from "@homepage/content";
+import type { BusinessTheme } from "@homepage/themes";
+import { themeToCssVars } from "@homepage/themes";
+
+type Props = {
+  content: BusinessContent;
+  theme: BusinessTheme;
+};
+
+const { content, theme } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const base = import.meta.env.BASE_URL;
+const localizedHref = (href: string) =>
+  href.startsWith("http")
+    ? href
+    : new URL(`${base}${href.replace(/^\/+/, "")}`, Astro.site).toString();
+const currentLocale =
+  content.locale?.available.find(
+    (locale) => locale.code === content.locale?.defaultLocale
+  ) ?? content.locale?.available[0];
+const imagePath = content.hero.image.src.startsWith("http")
+  ? content.hero.image.src
+  : `${base}${content.hero.image.src.replace(/^\/+/, "")}`;
+const imageUrl = new URL(imagePath, Astro.site).toString();
+const branchSchemas =
+  content.branches?.map((branch) => ({
+    "@type": "Restaurant",
+    name: branch.name,
+    telephone: branch.phone,
+    address: branch.address,
+    url: branch.mapUrl
+  })) ?? [];
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: content.business.name,
+  description: content.business.description,
+  url: canonicalUrl,
+  image: imageUrl,
+  department: branchSchemas
+};
+---
+
+<!doctype html>
+<html lang={currentLocale?.lang ?? "ja"} style={themeToCssVars(theme)}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{content.business.seoTitle}</title>
+    <meta name="description" content={content.business.seoDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+    {
+      content.locale?.available.map((locale) => (
+        <link
+          rel="alternate"
+          hreflang={locale.lang}
+          href={localizedHref(locale.href ?? "")}
+        />
+      ))
+    }
+    <meta property="og:title" content={content.business.seoTitle} />
+    <meta property="og:description" content={content.business.seoDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema)}
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  main {
+    overflow: hidden;
+  }
+
+  .skip-link {
+    background: var(--color-primary);
+    color: var(--color-primary-text);
+    font-weight: 800;
+    left: 1rem;
+    padding: 0.7rem 1rem;
+    position: absolute;
+    top: 1rem;
+    transform: translateY(-140%);
+    z-index: 20;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+</style>

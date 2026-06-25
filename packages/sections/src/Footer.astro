@@ -4,15 +4,16 @@ import type { BusinessContent } from "@homepage/content";
 type Props = {
   business: BusinessContent["business"];
   navigation: BusinessContent["navigation"];
+  labels?: NonNullable<BusinessContent["locale"]>["labels"];
 };
 
-const { business, navigation } = Astro.props;
+const { business, navigation, labels = {} } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer>
   <strong>{business.name}</strong>
-  <nav aria-label="フッターナビゲーション">
+  <nav aria-label={labels.footerNavigation ?? "フッターナビゲーション"}>
     {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
   </nav>
   <span>&copy; {year} {business.name}</span>

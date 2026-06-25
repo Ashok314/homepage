@@ -1,0 +1,8 @@
+---
+import SahanaPage from "../components/SahanaPage.astro";
+import { getSiteContent, theme } from "../../content/site";
+
+const content = getSiteContent("ja");
+---
+
+<SahanaPage content={content} theme={theme} />

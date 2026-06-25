@@ -24,7 +24,12 @@ jobs:
       SITE_ORIGIN: https://ashok314.github.io
       PAGES_ROOT: /homepage
       ROOT_APP: home
-      DEPLOY_APPS: "binita helloworld"
+      PUBLIC_BINITA_URL: https://binita-restaurant.vercel.app/
+      # Set this after the Sahana Vercel project is created.
+      # PUBLIC_SAHANA_URL: https://sahana-restaurant.vercel.app/
+      # Client production sites are deployed by Vercel projects.
+      # DEPLOY_APPS: "binita sahana helloworld"
+      DEPLOY_APPS: "helloworld"
     steps:
       - name: Checkout
         uses: actions/checkout@v4

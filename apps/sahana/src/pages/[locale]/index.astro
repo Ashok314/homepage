@@ -1,0 +1,18 @@
+---
+import SahanaPage from "../../components/SahanaPage.astro";
+import { getSiteContent, supportedLocales, theme } from "../../../content/site";
+
+export function getStaticPaths() {
+  return supportedLocales
+    .filter((locale) => locale !== "ja")
+    .map((locale) => ({
+      params: { locale },
+      props: { locale }
+    }));
+}
+
+const { locale } = Astro.props;
+const content = getSiteContent(locale);
+---
+
+<SahanaPage content={content} theme={theme} />

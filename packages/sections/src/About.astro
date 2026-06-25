@@ -4,15 +4,24 @@ import type { BusinessContent } from "@homepage/content";
 
 type Props = {
   about: BusinessContent["about"];
+  labels?: NonNullable<BusinessContent["locale"]>["labels"];
 };
 
-const { about } = Astro.props;
+const { about, labels = {} } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const imageSrc = about.image.src.startsWith("http")
+  ? about.image.src
+  : `${base}${about.image.src.replace(/^\/+/, "")}`;
 ---
 
-<Section id="about" eyebrow="こだわり" title={about.title}>
+<Section
+  id="about"
+  eyebrow={labels.aboutEyebrow ?? labels.featuresEyebrow ?? "こだわり"}
+  title={about.title}
+>
   <div class="about">
     <p>{about.text}</p>
-    <img src={about.image.src} alt={about.image.alt} loading="lazy" />
+    <img src={imageSrc} alt={about.image.alt} loading="lazy" />
   </div>
 </Section>
 

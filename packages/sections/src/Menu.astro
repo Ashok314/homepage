@@ -4,13 +4,24 @@ import type { BusinessContent } from "@homepage/content";
 
 type Props = {
   menu: BusinessContent["menu"];
+  labels?: NonNullable<BusinessContent["locale"]>["labels"];
 };
 
-const { menu } = Astro.props;
-const groups = menu.groups ?? [{ title: "Menu", items: menu.items ?? [] }];
+const { menu, labels = {} } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const resolveAsset = (src: string) =>
+  src.startsWith("http") ? src : `${base}${src.replace(/^\/+/, "")}`;
+const groups = menu.groups ?? [
+  { title: labels.menuFallbackTitle ?? "メニュー", items: menu.items ?? [] }
+];
 ---
 
-<Section id="menu" eyebrow="メニュー" title={menu.title} intro={menu.intro}>
+<Section
+  id="menu"
+  eyebrow={labels.menuEyebrow ?? labels.menuFallbackTitle ?? "メニュー"}
+  title={menu.title}
+  intro={menu.intro}
+>
   <div class="menu">
     {
       groups.map((group) => (
@@ -21,24 +32,45 @@ const groups = menu.groups ?? [{ title: "Menu", items: menu.items ?? [] }];
           <h3 id={`menu-${group.title.toLowerCase().replaceAll(" ", "-")}`}>
             {group.title}
           </h3>
-          <div class="menu__items">
-            {group.items.map((item) => (
-              <article>
-                <div>
-                  <h4>{item.name}</h4>
-                  <p>{item.description}</p>
-                  {item.tags && (
-                    <ul aria-label={`${item.name} tags`}>
-                      {item.tags.map((tag) => (
-                        <li>{tag}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-                {item.price && <strong>{item.price}</strong>}
-              </article>
-            ))}
-          </div>
+          {group.image && (
+            <button
+              type="button"
+              class="menu__image-button"
+              data-lightbox-image
+              data-lightbox-src={resolveAsset(group.image.src)}
+              data-lightbox-alt={group.image.alt}
+              data-lightbox-title={group.title}
+              aria-label={`${group.title} - ${labels.enlargeImageLabel ?? "画像を拡大表示"}`}
+            >
+              <img
+                class="menu__image"
+                src={resolveAsset(group.image.src)}
+                alt={group.image.alt}
+                loading="lazy"
+              />
+              <span>{labels.enlargeImageLabel ?? "画像を拡大表示"}</span>
+            </button>
+          )}
+          {group.items && group.items.length > 0 && (
+            <div class="menu__items">
+              {group.items.map((item) => (
+                <article>
+                  <div>
+                    <h4>{item.name}</h4>
+                    <p>{item.description}</p>
+                    {item.tags && (
+                      <ul aria-label={`${item.name} tags`}>
+                        {item.tags.map((tag) => (
+                          <li>{tag}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  {item.price && <strong>{item.price}</strong>}
+                </article>
+              ))}
+            </div>
+          )}
         </section>
       ))
     }
@@ -67,6 +99,28 @@ const groups = menu.groups ?? [{ title: "Menu", items: menu.items ?? [] }];
     font-family: var(--font-heading);
     font-size: 1.55rem;
     margin: 0;
+  }
+
+  .menu__image-button {
+    background: transparent;
+    border: 0;
+    color: var(--color-primary);
+    cursor: zoom-in;
+    display: grid;
+    font-size: 0.9rem;
+    font-weight: 850;
+    gap: 0.45rem;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+  }
+
+  .menu__image {
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius);
+    height: auto;
+    object-fit: contain;
+    width: 100%;
   }
 
   article {

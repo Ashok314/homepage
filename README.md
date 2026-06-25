@@ -9,8 +9,15 @@ The active client implementation is `apps/binita`, an Astro site for Binita Rest
 ```text
 homepage/
 ├── apps/
-│   └── binita/
-│       ├── content/
+│   ├── home/
+│   │   └── src/
+│   ├── binita/
+│   │   ├── content/
+│   │   └── src/
+│   ├── sahana/
+│   │   ├── content/
+│   │   └── src/
+│   └── helloworld/
 │       └── src/
 ├── packages/
 │   ├── content/
@@ -37,9 +44,10 @@ Default `dev` starts all local app servers:
 
 - Home: `http://localhost:4321/`
 - Binita: `http://localhost:4322/`
+- Sahana: `http://localhost:4324/`
 - Helloworld: `http://localhost:4323/`
 
-Use app-specific variants such as `pnpm run dev:binita`, `pnpm run dev:helloworld`, `pnpm run build:home`, `pnpm run build:binita`, or `pnpm run check:all` when needed. Default `preview` targets the root home app for convenience.
+Use app-specific variants such as `pnpm run dev:binita`, `pnpm run dev:sahana`, `pnpm run dev:helloworld`, `pnpm run build:home`, `pnpm run build:binita`, `pnpm run build:sahana`, or `pnpm run check:all` when needed. Default `preview` targets the root home app for convenience.
 
 ## Architecture
 
@@ -68,6 +76,7 @@ See `docs/vercel.md` for Vercel project settings.
 
 - `apps/home` is the root landing page for `/homepage/`.
 - `apps/binita` is the primary client site.
+- `apps/sahana` is a generic Homepage-framework restaurant site with Koto and Asagaya branches.
 - `apps/helloworld` is a minimal test app used to verify multi-app Pages deployment.
 
 Azusawa is the only active branch in the current Binita website. Older branches are kept as branch history in content, not as active customer locations.

@@ -263,7 +263,7 @@ const asset = (path: string) => `${base}clients/binita/archive/${path}`;
                       <h3>{card.description || card.title}</h3>
                       <strong>{card.price}</strong>
                       <ul>
-                        {card.items.map((item) => (
+                        {(card.items ?? []).map((item) => (
                           <li>{item.name}</li>
                         ))}
                       </ul>
@@ -296,7 +296,7 @@ const asset = (path: string) => `${base}clients/binita/archive/${path}`;
                       <h3>{card.description || card.title}</h3>
                       <strong>{card.price}</strong>
                       <ul>
-                        {card.items.map((item) => (
+                        {(card.items ?? []).map((item) => (
                           <li>{item.name}</li>
                         ))}
                       </ul>

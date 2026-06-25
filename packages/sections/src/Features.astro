@@ -4,12 +4,17 @@ import type { BusinessContent } from "@homepage/content";
 
 type Props = {
   features: BusinessContent["features"];
+  labels?: NonNullable<BusinessContent["locale"]>["labels"];
 };
 
-const { features } = Astro.props;
+const { features, labels = {} } = Astro.props;
 ---
 
-<Section id="features" eyebrow="ビニタの魅力" title="本場の味を楽しめる理由">
+<Section
+  id="features"
+  eyebrow={labels.featuresEyebrow ?? "こだわり"}
+  title={labels.featuresTitle ?? "特徴"}
+>
   <div class="features">
     {
       features.map((feature) => (

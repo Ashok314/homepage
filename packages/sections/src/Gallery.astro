@@ -4,16 +4,36 @@ import type { BusinessContent } from "@homepage/content";
 
 type Props = {
   gallery: BusinessContent["gallery"];
+  labels?: NonNullable<BusinessContent["locale"]>["labels"];
 };
 
-const { gallery } = Astro.props;
+const { gallery, labels = {} } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const resolveAsset = (src: string) =>
+  src.startsWith("http") ? src : `${base}${src.replace(/^\/+/, "")}`;
 ---
 
-<Section id="gallery" eyebrow="写真" title="料理写真">
+<Section
+  id="gallery"
+  eyebrow={labels.galleryEyebrow ?? "写真"}
+  title={labels.galleryTitle ?? "料理・店舗写真"}
+>
   <div class="gallery">
     {
       gallery.map((image) => (
-        <img src={image.src} alt={image.alt} loading="lazy" />
+        <figure>
+          <button
+            type="button"
+            data-lightbox-image
+            data-lightbox-src={resolveAsset(image.src)}
+            data-lightbox-alt={image.alt}
+            data-lightbox-title={image.alt}
+            aria-label={`${image.alt} - ${labels.enlargeImageLabel ?? "画像を拡大表示"}`}
+          >
+            <img src={resolveAsset(image.src)} alt={image.alt} loading="lazy" />
+          </button>
+          <figcaption>{image.alt}</figcaption>
+        </figure>
       ))
     }
   </div>
@@ -26,12 +46,34 @@ const { gallery } = Astro.props;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  figure {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+  }
+
+  button {
+    background: transparent;
+    border: 0;
+    cursor: zoom-in;
+    display: block;
+    padding: 0;
+    text-align: inherit;
+  }
+
   img {
     aspect-ratio: 1;
     border-radius: var(--radius);
     height: auto;
     object-fit: cover;
     width: 100%;
+  }
+
+  figcaption {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    font-weight: 750;
+    line-height: 1.5;
   }
 
   @media (max-width: 760px) {

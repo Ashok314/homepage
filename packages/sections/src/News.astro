@@ -4,14 +4,19 @@ import type { BusinessContent } from "@homepage/content";
 
 type Props = {
   posts: NonNullable<BusinessContent["posts"]>;
+  labels?: NonNullable<BusinessContent["locale"]>["labels"];
 };
 
-const { posts } = Astro.props;
+const { posts, labels = {} } = Astro.props;
 ---
 
 {
   posts.length > 0 && (
-    <Section id="news" eyebrow="お知らせ" title="新着情報">
+    <Section
+      id="news"
+      eyebrow={labels.newsEyebrow ?? "お知らせ"}
+      title={labels.newsTitle ?? "新着情報"}
+    >
       <div class="news">
         {posts.map((post) => (
           <article>
