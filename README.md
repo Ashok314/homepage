@@ -62,15 +62,57 @@ This keeps content separate from presentation while avoiding a CMS, database, or
 
 ## Deployment
 
-GitHub Actions builds the deployed apps and publishes a combined Pages artifact. Each app is built with its own `PUBLIC_BASE_PATH` and `PUBLIC_SITE_URL`, then copied into its own subpath inside the final `dist/` output.
+GitHub Actions builds the public directory/listing site and publishes a combined Pages artifact. Client production sites are deployed as standalone Vercel projects so they can use their own production branch and domain.
 
 In repository settings, set Pages source to **GitHub Actions**. The workflow is in `.github/workflows/deploy-pages.yml`.
 
-To add another deployed app, add its app name to `DEPLOY_APPS` in `.github/workflows/deploy-pages.yml`. The workflow will build `@homepage/<app>` and publish it under `/homepage/<app>/`.
+`DEPLOY_APPS` is reserved for demo or Pages-hosted apps such as `helloworld`. Do not add production client sites such as Binita or Sahana there unless they are intentionally hosted under GitHub Pages.
 
 For standalone client deployment on Vercel or a custom domain, build from the monorepo root with the app-specific standalone build script. Standalone builds use `PUBLIC_BASE_PATH=/`; set `PUBLIC_SITE_URL` to the final production origin when the domain is ready.
 
 See `docs/vercel.md` for Vercel project settings.
+
+## Release Strategy
+
+Use `main` for active development and shared framework work. Production client deployments are released from client-specific branches:
+
+- `release/binita` deploys Binita production.
+- `release/sahana` deploys Sahana production.
+
+Configure each Vercel project to use its matching release branch as the production branch. This keeps changes on `main` from affecting live client sites until they are explicitly released.
+
+Release flow:
+
+```bash
+git checkout main
+git pull
+
+git checkout release/sahana
+git merge main
+git push origin release/sahana
+```
+
+Use client-scoped tags for release versions:
+
+```bash
+git tag -a sahana-v0.1.0 -m "Sahana v0.1.0"
+git push origin sahana-v0.1.0
+```
+
+Before every push, Husky runs:
+
+```bash
+pnpm run verify:push
+```
+
+That verifies the Pages shell and standalone client builds:
+
+- `pnpm run build:home`
+- `pnpm run build:helloworld`
+- `pnpm run build:binita:standalone`
+- `pnpm run build:sahana:standalone`
+
+If any build fails, the push is blocked locally. Vercel also runs the standalone build for the client project and keeps the previous production deployment live if the new build fails.
 
 ## Current Apps
 
