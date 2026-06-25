@@ -22,8 +22,7 @@ jobs:
       PAGES_ROOT: /homepage
       ROOT_APP: home
       PUBLIC_BINITA_URL: https://binita-restaurant.vercel.app/
-      # Set this after the Sahana Vercel project is created.
-      # PUBLIC_SAHANA_URL: https://sahana-restaurant.vercel.app/
+      PUBLIC_SAHANA_URL: https://indo-sahana.vercel.app/
       # Client production sites are deployed by Vercel projects.
       # DEPLOY_APPS: "binita sahana helloworld"
       DEPLOY_APPS: "helloworld"

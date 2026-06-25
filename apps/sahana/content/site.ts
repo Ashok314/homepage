@@ -534,10 +534,10 @@ const translations: Record<Exclude<SahanaLocale, "ja">, TranslationSet> = {
     },
     webOrder: {
       title: "Online Order",
-      labels: ["Koto Uber Eats", "Koto Demae-can", "Asagaya Delivery"],
-      campaigns: ["", "", "Online ordering is coming soon"],
-      logoTexts: ["", "", "Coming soon"],
-      logoAlts: ["Uber Eats", "Demae-can", ""]
+      labels: ["Koto Uber Eats", "Koto Demae-can", "Asagaya Uber Eats"],
+      campaigns: ["", "", ""],
+      logoTexts: ["", "", ""],
+      logoAlts: ["Uber Eats", "Demae-can", "Uber Eats"]
     },
     galleryAlts: [
       "Hot pot dish",
@@ -699,10 +699,10 @@ const translations: Record<Exclude<SahanaLocale, "ja">, TranslationSet> = {
     },
     webOrder: {
       title: "अनलाइन अर्डर",
-      labels: ["कोतो Uber Eats", "कोतो Demae-can", "आसागाया डेलिभरी"],
-      campaigns: ["", "", "अनलाइन अर्डर छिट्टै आउँदैछ"],
-      logoTexts: ["", "", "छिट्टै"],
-      logoAlts: ["Uber Eats", "Demae-can", ""]
+      labels: ["कोतो Uber Eats", "कोतो Demae-can", "आसागाया Uber Eats"],
+      campaigns: ["", "", ""],
+      logoTexts: ["", "", ""],
+      logoAlts: ["Uber Eats", "Demae-can", "Uber Eats"]
     },
     galleryAlts: [
       "नाबे परिकार",
@@ -864,10 +864,10 @@ const translations: Record<Exclude<SahanaLocale, "ja">, TranslationSet> = {
     },
     webOrder: {
       title: "ऑनलाइन ऑर्डर",
-      labels: ["कोतो Uber Eats", "कोतो Demae-can", "आसागाया डिलीवरी"],
-      campaigns: ["", "", "ऑनलाइन ऑर्डर जल्द शुरू होगा"],
-      logoTexts: ["", "", "जल्द"],
-      logoAlts: ["Uber Eats", "Demae-can", ""]
+      labels: ["कोतो Uber Eats", "कोतो Demae-can", "आसागाया Uber Eats"],
+      campaigns: ["", "", ""],
+      logoTexts: ["", "", ""],
+      logoAlts: ["Uber Eats", "Demae-can", "Uber Eats"]
     },
     galleryAlts: [
       "हॉट पॉट डिश",
@@ -929,18 +929,6 @@ const applyTranslation = (
       group.image.alt = translation.menu.imageAlts[index] ?? group.image.alt;
     }
   });
-  if (content.banner) {
-    content.banner.title = translation.banner.title;
-    content.banner.items?.forEach((item, index) => {
-      item.title = translation.banner.items[index]?.title ?? item.title;
-      item.text = translation.banner.items[index]?.text ?? item.text;
-      item.linkLabel =
-        translation.banner.items[index]?.linkLabel ?? item.linkLabel;
-      if (item.logo && translation.banner.items[index]?.logoAlt) {
-        item.logo.alt = translation.banner.items[index].logoAlt;
-      }
-    });
-  }
   if (content.webOrder) {
     content.webOrder.title = translation.webOrder.title;
     content.webOrder.links.forEach((link, index) => {
